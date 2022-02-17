@@ -1,0 +1,21 @@
+* {
+    font-family: arial;
+    padding: 4px;
+}
+
+.para {
+    font-size: 18px;
+}
+
+h1 {
+    font-size: x-large;
+}
+
+button {
+    font-size: 12px;
+}
+
+.life {
+    font-size: 20px;
+    margin: 0 0 0 1rem;
+}
