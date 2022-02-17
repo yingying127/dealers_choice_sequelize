@@ -1,38 +1,13 @@
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/marvel_db');
-const { STRING } = require('sequelize');
-
-const Character = sequelize.define('character', {
-    name: {
-        type: STRING,
-        unique: true,
-        allowNull: false,
-        validate: {
-            notEmpty: true,
-        }
-    }
-});
-
-const Life = sequelize.define('life', {
-    name: {
-        type: STRING,
-        allowNull: false,
-        validate: {
-            notEmpty: true,
-        }
-    }
-});
-
-Character.belongsTo(Life);
-Life.hasMany(Character);
+const db = require('./db');
+const sequelize = db.sequelize;
+const Character = db.Character;
+const Life = db.Life;
 
 const express = require('express');
-
 const app = express();
 const methodOverride = require('method-override');
 
 app.use(express.static('public'))
-
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 
